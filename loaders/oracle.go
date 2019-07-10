@@ -10,8 +10,8 @@ import (
 
 	_ "github.com/godror/godror"
 
-	"github.com/xo/xo/internal"
-	"github.com/xo/xo/models"
+	"github.com/mattetti/xo/internal"
+	"github.com/mattetti/xo/models"
 )
 
 func init() {

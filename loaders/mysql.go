@@ -7,9 +7,11 @@ import (
 
 	"github.com/kenshaw/snaker"
 
-	"github.com/xo/xo/internal"
-	"github.com/xo/xo/models"
+	"github.com/mattetti/xo/internal"
+	"github.com/mattetti/xo/models"
 )
+
+// Matt: modified to use https://gopkg.in/guregu/null.v3
 
 func init() {
 	internal.SchemaLoaders["mysql"] = internal.TypeLoader{
@@ -90,8 +92,8 @@ switchDT:
 			nilVal = "false"
 			typ = "bool"
 			if nullable {
-				nilVal = "sql.NullBool{}"
-				typ = "sql.NullBool"
+				nilVal = "null.Bool{}"
+				typ = "null.Bool"
 			}
 			break switchDT
 		} else if precision <= 8 {
@@ -104,24 +106,24 @@ switchDT:
 			typ = "uint64"
 		}
 		if nullable {
-			nilVal = "sql.NullInt64{}"
-			typ = "sql.NullInt64"
+			nilVal = "null.Int{}"
+			typ = "null.Int"
 		}
 
 	case "bool", "boolean":
 		nilVal = "false"
 		typ = "bool"
 		if nullable {
-			nilVal = "sql.NullBool{}"
-			typ = "sql.NullBool"
+			nilVal = "null.Bool{}"
+			typ = "null.Bool"
 		}
 
 	case "char", "varchar", "tinytext", "text", "mediumtext", "longtext":
 		nilVal = `""`
 		typ = "string"
 		if nullable {
-			nilVal = "sql.NullString{}"
-			typ = "sql.NullString"
+			nilVal = "null.String{}"
+			typ = "null.String"
 		}
 
 	case "tinyint":
@@ -130,56 +132,56 @@ switchDT:
 			nilVal = "false"
 			typ = "bool"
 			if nullable {
-				nilVal = "sql.NullBool{}"
-				typ = "sql.NullBool"
+				nilVal = "null.Bool{}"
+				typ = "null.Bool"
 			}
 			break
 		}
 		nilVal = "0"
 		typ = "int8"
 		if nullable {
-			nilVal = "sql.NullInt64{}"
-			typ = "sql.NullInt64"
+			nilVal = "null.Int{}"
+			typ = "null.Int"
 		}
 
 	case "smallint":
 		nilVal = "0"
 		typ = "int16"
 		if nullable {
-			nilVal = "sql.NullInt64{}"
-			typ = "sql.NullInt64"
+			nilVal = "null.Int{}"
+			typ = "null.Int"
 		}
 
 	case "mediumint", "int", "integer":
 		nilVal = "0"
 		typ = args.Int32Type
 		if nullable {
-			nilVal = "sql.NullInt64{}"
-			typ = "sql.NullInt64"
+			nilVal = "null.Int{}"
+			typ = "null.Int"
 		}
 
 	case "bigint":
 		nilVal = "0"
 		typ = "int64"
 		if nullable {
-			nilVal = "sql.NullInt64{}"
-			typ = "sql.NullInt64"
+			nilVal = "null.Int{}"
+			typ = "null.Int"
 		}
 
 	case "float":
 		nilVal = "0.0"
 		typ = "float32"
 		if nullable {
-			nilVal = "sql.NullFloat64{}"
-			typ = "sql.NullFloat64"
+			nilVal = "null.Float{}"
+			typ = "null.Float"
 		}
 
 	case "decimal", "double":
 		nilVal = "0.0"
 		typ = "float64"
 		if nullable {
-			nilVal = "sql.NullFloat64{}"
-			typ = "sql.NullFloat64"
+			nilVal = "null.Float{}"
+			typ = "null.Float"
 		}
 
 	case "binary", "varbinary", "tinyblob", "blob", "mediumblob", "longblob":
@@ -189,8 +191,8 @@ switchDT:
 		nilVal = "time.Time{}"
 		typ = "time.Time"
 		if nullable {
-			nilVal = "mysql.NullTime{}"
-			typ = "mysql.NullTime"
+			nilVal = "null.Time{}"
+			typ = "null.Time"
 		}
 
 	case "time":

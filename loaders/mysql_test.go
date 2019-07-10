@@ -3,8 +3,8 @@ package loaders_test
 import (
 	"testing"
 
-	"github.com/xo/xo/internal"
-	"github.com/xo/xo/loaders"
+	"github.com/mattetti/xo/internal"
+	"github.com/mattetti/xo/loaders"
 )
 
 func Test_MyParseType(t *testing.T) {
@@ -83,16 +83,16 @@ func Test_MyParseType(t *testing.T) {
 			desc:      "nullable bit type with precision == 1 parses",
 			dt:        "bit(1)",
 			precision: 1,
-			nilVal:    "sql.NullBool{}",
-			typ:       "sql.NullBool",
+			nilVal:    "null.Bool{}",
+			typ:       "null.Bool",
 			nullable:  true,
 		},
 		{
 			desc:      "nullable bit type with precision > 1 parses",
 			dt:        "bit(64)",
 			precision: 64,
-			nilVal:    "sql.NullInt64{}",
-			typ:       "sql.NullInt64",
+			nilVal:    "null.Int{}",
+			typ:       "null.Int",
 			nullable:  true,
 		},
 		{
@@ -107,8 +107,8 @@ func Test_MyParseType(t *testing.T) {
 			desc:      "nullable tinyint with precision one parses into bool",
 			dt:        "tinyint(1)",
 			precision: 1,
-			nilVal:    "sql.NullBool{}",
-			typ:       "sql.NullBool",
+			nilVal:    "null.Bool{}",
+			typ:       "null.Bool",
 			nullable:  true,
 		},
 		{
